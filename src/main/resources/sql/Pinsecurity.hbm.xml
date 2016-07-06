@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Pinsecurity" table="pinsecurity" catalog="peycash">
+        <id name="idpinsecurity" type="java.lang.Long">
+            <column name="IdPINSecurity" />
+            <generator class="identity" />
+        </id>
+        <property name="pinsecurity" type="string">
+            <column name="PINSecurity" length="50" not-null="true" />
+        </property>
+        <property name="active" type="java.lang.Integer">
+            <column name="isActive" not-null="true" />
+        </property>
+        <set name="transactionses" table="transactions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdPINSecurity" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Transactions" />
+        </set>
+    </class>
+</hibernate-mapping>

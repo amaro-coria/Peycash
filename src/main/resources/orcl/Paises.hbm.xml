@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Paises" table="PAISES">
+        <id name="idPais" type="short">
+            <column name="ID_PAIS" precision="4" scale="0" />
+            <generator class="sequence" >
+        		<param name="sequence">ID_PAISES</param>
+ 			</generator>
+        </id>
+        <property name="codigoIso" type="string">
+            <column name="CODIGO_ISO" length="4" not-null="true" />
+        </property>
+        <property name="estatus" type="byte">
+            <column name="ESTATUS" precision="2" scale="0" not-null="true" />
+        </property>
+        <set name="estadoses" table="ESTADOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PAIS" precision="4" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Estados" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/05/2014 12:56:01 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Systemalerts" table="systemalerts" catalog="peycash">
+        <id name="idAlert" type="int">
+            <column name="IdAlert" />
+            <generator class="identity" />
+        </id>
+        <property name="alert" type="string">
+            <column name="Alert" length="20" not-null="true" />
+        </property>
+        <property name="dsc" type="string">
+            <column name="Dsc" length="100" />
+        </property>
+        <property name="dateRegister" type="timestamp">
+            <column name="DateRegister" length="19" not-null="true" />
+        </property>
+        <property name="attended" type="timestamp">
+            <column name="Attended" length="19"  />
+        </property>
+    </class>
+</hibernate-mapping>

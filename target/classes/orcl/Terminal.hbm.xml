@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.peycash.persistence.domain.Terminal" table="TERMINAL">
+  <id name="idterminal" type="long">
+   <column name="IDTERMINAL" precision="10" scale="0"/>
+   <generator class="sequence" >
+        		<param name="sequence">ID_TERMINAL</param>
+ 			</generator>
+  </id>
+  <many-to-one class="com.peycash.persistence.domain.Partnershop"
+   fetch="select" name="partnershop">
+   <column name="IDPARTNERSHOP" not-null="true" precision="10" scale="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="terminalid" type="short">
+   <column name="TERMINALID" not-null="true" precision="4" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="serialnumber" type="string">
+   <column length="50" name="SERIALNUMBER" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="ticketprinter" type="string">
+   <column length="50" name="TICKETPRINTER"/>
+  </property>
+  <property generated="never" lazy="false" name="touch" type="boolean">
+   <column name="TOUCH" not-null="true" precision="1" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="internetconnection" type="boolean">
+   <column name="INTERNETCONNECTION" not-null="true" precision="1" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="barcodereader" type="boolean">
+   <column name="BARCODEREADER" not-null="true" precision="1" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="cardreader" type="boolean">
+   <column name="CARDREADER" not-null="true" precision="1" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="miniumamount" type="big_decimal">
+   <column name="MINIUMAMOUNT" precision="3"/>
+  </property>
+  <property generated="never" lazy="false" name="maximumamount" type="big_decimal">
+   <column name="MAXIMUMAMOUNT" not-null="true" precision="3"/>
+  </property>
+  <property generated="never" lazy="false" name="datemodified" type="serializable">
+   <column name="DATEMODIFIED" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="username" type="string">
+   <column length="50" name="USERNAME" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="isactivied" type="java.lang.Boolean">
+   <column name="ISACTIVIED" precision="1" scale="0"/>
+  </property>
+ </class>
+</hibernate-mapping>

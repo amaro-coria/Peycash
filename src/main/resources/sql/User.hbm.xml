@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-sep-2014 11:35:57 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+	<class name="com.peycash.persistence.domain.User" table="user"
+		catalog="peycash">
+		<id name="iduser" type="int">
+			<column name="iduser" />
+			<generator class="identity" />
+		</id>
+		<property name="username" type="string">
+			<column name="username" length="45" not-null="true" />
+		</property>
+		<property name="password" type="string">
+			<column name="password" length="45" not-null="true" />
+		</property>
+		<property name="name" type="string">
+			<column name="name" length="45" />
+		</property>
+		<property name="lastname" type="string">
+			<column name="lastname" length="45" />
+		</property>
+		<property name="active" type="short">
+			<column name="active" not-null="true" />
+		</property>
+		<set name="roleusers" table="roleuser" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="iduser" not-null="true" />
+			</key>
+			<one-to-many class="com.peycash.persistence.domain.Roleuser" />
+		</set>
+	</class>
+</hibernate-mapping>

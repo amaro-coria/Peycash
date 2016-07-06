@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class catalog="peycash" name="com.peycash.persistence.domain.Logcall" table="logcall">
+  <id name="idlogcall" type="java.lang.Long">
+   <column name="IdLogCall"/>
+   <generator class="identity"/>
+  </id>
+  <many-to-one class="com.peycash.persistence.domain.Statecall"
+   fetch="select" name="statecall">
+   <column name="IdStateCall" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="dateserver" type="timestamp">
+   <column length="19" name="DateServer" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="attempt" type="string">
+   <column length="50" name="Attempt"/>
+  </property>
+  <property generated="never" lazy="false" name="username" type="string">
+   <column length="50" name="Username"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true"
+   name="customerregistrations" sort="unsorted" table="customerregistration">
+   <key>
+    <column name="IdLogCall"/>
+   </key>
+   <one-to-many class="com.peycash.persistence.domain.Customerregistration"/>
+  </set>
+  <set fetch="select" inverse="true" lazy="true" name="historylogcalls"
+   sort="unsorted" table="historylogcall">
+   <key>
+    <column name="IdLogCall" not-null="true"/>
+   </key>
+   <one-to-many class="com.peycash.persistence.domain.Historylogcall"/>
+  </set>
+ </class>
+</hibernate-mapping>

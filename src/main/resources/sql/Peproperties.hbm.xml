@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Peproperties" table="peproperties" catalog="peycash">
+        <id name="idpeproperties" type="java.lang.Integer">
+            <column name="IdPEProperties" />
+            <generator class="identity" />
+        </id>
+        <property name="peVersion" type="string">
+            <column name="PeVersion" length="8" />
+        </property>
+        <many-to-one name="peservices" class="com.peycash.persistence.domain.Peservices" fetch="select">
+            <column name="IdPEServices" not-null="true" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="Title" length="50" not-null="true" />
+        </property>
+        <property name="company" type="string">
+            <column name="Company" length="50" />
+        </property>
+        <property name="author" type="string">
+            <column name="Author" length="50" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" />
+        </property>
+        <property name="owner" type="string">
+            <column name="Owner" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Workday" table="WORKDAY">
+        <id name="idworkday" type="long">
+            <column name="IDWORKDAY" precision="10" scale="0" />
+            <generator class="sequence" >
+        		<param name="sequence">ID_WORKDAY</param>
+ 			</generator>
+        </id>
+        <property name="monday" type="java.lang.Boolean">
+            <column name="MONDAY" precision="1" scale="0" />
+        </property>
+        <property name="tuesday" type="java.lang.Boolean">
+            <column name="TUESDAY" precision="1" scale="0" />
+        </property>
+        <property name="wednesday" type="java.lang.Boolean">
+            <column name="WEDNESDAY" precision="1" scale="0" />
+        </property>
+        <property name="thursday" type="java.lang.Boolean">
+            <column name="THURSDAY" precision="1" scale="0" />
+        </property>
+        <property name="friday" type="java.lang.Boolean">
+            <column name="FRIDAY" precision="1" scale="0" />
+        </property>
+        <property name="saturday" type="java.lang.Boolean">
+            <column name="SATURDAY" precision="1" scale="0" />
+        </property>
+        <property name="sunday" type="java.lang.Boolean">
+            <column name="SUNDAY" precision="1" scale="0" />
+        </property>
+        <property name="checkin" type="serializable">
+            <column name="CHECKIN" />
+        </property>
+        <property name="checkout" type="serializable">
+            <column name="CHECKOUT" />
+        </property>
+        <set name="pebranches" table="PEBRANCH" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDWORKDAY" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Pebranch" />
+        </set>
+    </class>
+</hibernate-mapping>

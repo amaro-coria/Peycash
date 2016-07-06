@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Processingcode" table="processingcode" catalog="peycash">
+        <id name="idprocessingcode" type="java.lang.Integer">
+            <column name="IdProcessingCode" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="accounttypeByIdaccounttypefrom" class="com.peycash.persistence.domain.Accounttype" fetch="select">
+            <column name="IdAccountTypeFrom" not-null="true" />
+        </many-to-one>
+        <many-to-one name="accounttypeByIdaccounttypeto" class="com.peycash.persistence.domain.Accounttype" fetch="select">
+            <column name="IdAccountTypeTo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transactiontype" class="com.peycash.persistence.domain.Transactiontype" fetch="select">
+            <column name="IdTransactionType" not-null="true" />
+        </many-to-one>
+        <property name="description" type="string">
+            <column name="Description" />
+        </property>
+        <set name="responsecodeses" table="responsecodes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdProcessingCode" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Responsecodes" />
+        </set>
+        <set name="messagefactories" table="messagefactory" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdProcessingCode" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Messagefactory" />
+        </set>
+        <set name="transactiondetails" table="transactiondetail" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdProcessingCode" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Transactiondetail" />
+        </set>
+    </class>
+</hibernate-mapping>

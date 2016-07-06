@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Blacklist" table="BLACKLIST">
+        <id name="idblacklist" type="long">
+            <column name="IDBLACKLIST" precision="10" scale="0" />
+           <generator class="sequence">  
+                <param name="sequence">ID_BLACKLIST</param>               
+            </generator>  
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="50" not-null="true" />
+        </property>
+        <property name="secondname" type="string">
+            <column name="SECONDNAME" length="50" not-null="true" />
+        </property>
+        <property name="surname" type="string">
+            <column name="SURNAME" length="50" not-null="true" />
+        </property>
+        <property name="datebirth" type="date">
+            <column name="DATEBIRTH" length="7" />
+        </property>
+        <property name="gender" type="string">
+            <column name="GENDER" length="50" />
+        </property>
+        <property name="celnumber" type="java.lang.Long">
+            <column name="CELNUMBER" precision="10" scale="0" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="NATIONALITY" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

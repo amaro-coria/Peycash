@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1/04/2014 06:12:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Userchangehistory" table="USERCHANGEHISTORY">
+        <id name="iduserchangehistory" type="long">
+            <column name="IDUSERCHANGEHISTORY" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="useraccount" class="com.peycash.persistence.domain.Useraccount" fetch="join">
+            <column name="USERACCOUNT" />
+        </many-to-one>
+        <property name="useraccount_1" type="java.lang.String">
+            <column name="USERACCOUNT_1" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="datemodified" type="java.io.Serializable">
+            <column name="DATEMODIFIED" />
+        </property>
+        <property name="reason" type="java.lang.String">
+            <column name="REASON" />
+        </property>
+    </class>
+</hibernate-mapping>

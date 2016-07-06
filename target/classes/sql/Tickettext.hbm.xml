@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/06/2014 04:35:20 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Tickettext" table="tickettext" catalog="peycash">
+        <id name="idTtext" type="int">
+            <column name="IdTText" />
+            <generator class="identity" />
+        </id>
+        <property name="ttext" type="string">
+            <column name="TText" length="160" />
+        </property>
+        <property name="tactive" type="java.lang.Short">
+            <column name="TActive" />
+        </property>
+    </class>
+</hibernate-mapping>

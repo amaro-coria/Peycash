@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/06/2014 04:35:20 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Smstext" table="smstext" catalog="peycash">
+        <id name="idSms" type="int">
+            <column name="IdSMS" />
+            <generator class="assigned" />
+        </id>
+        <property name="textSms" type="string">
+            <column name="TextSMS" length="120" />
+        </property>
+        <property name="activeSms" type="java.lang.Short">
+            <column name="ActiveSMS" />
+        </property>
+    </class>
+</hibernate-mapping>

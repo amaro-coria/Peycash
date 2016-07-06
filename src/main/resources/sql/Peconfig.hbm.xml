@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Peconfig" table="peconfig" catalog="peycash">
+        <id name="idpeconfig" type="java.lang.Long">
+            <column name="IdPEConfig" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="peconnectiontype" class="com.peycash.persistence.domain.Peconnectiontype" fetch="select">
+            <column name="IdPEConnetionType" not-null="true" />
+        </many-to-one>
+        <many-to-one name="peservices" class="com.peycash.persistence.domain.Peservices" fetch="select">
+            <column name="IdPEServices" not-null="true" />
+        </many-to-one>
+        <property name="url" type="string">
+            <column name="URL" length="100" />
+        </property>
+        <property name="ip" type="string">
+            <column name="IP" length="15" not-null="true" />
+        </property>
+        <property name="port" type="string">
+            <column name="Port" length="5" not-null="true" />
+        </property>
+        <property name="logactivated" type="short">
+            <column name="LogActivated" not-null="true" />
+        </property>
+        <property name="logpath" type="string">
+            <column name="LogPath" length="100" />
+        </property>
+        <property name="eventactivated" type="short">
+            <column name="EventActivated" not-null="true" />
+        </property>
+        <property name="eventpath" type="string">
+            <column name="EventPath" length="100" />
+        </property>
+        <property name="deployDir" type="string">
+            <column name="DeployDir" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

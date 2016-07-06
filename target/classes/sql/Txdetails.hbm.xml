@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/06/2014 05:56:51 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Txdetails" table="txdetails" catalog="peycash">
+        <id name="idTx" type="long">
+            <column name="IdTx" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="transactions" class="com.peycash.persistence.domain.Transactions" fetch="select">
+            <column name="IdTransactions" />
+        </many-to-one>
+        <many-to-one name="transactiondetail" class="com.peycash.persistence.domain.Transactiondetail" fetch="select">
+            <column name="IdTransactionDetail" />
+        </many-to-one>
+        <property name="dateInserted" type="timestamp">
+            <column name="DateInserted" length="19"  />
+        </property>
+    </class>
+</hibernate-mapping>

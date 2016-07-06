@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Customer" table="customer" catalog="peycash">
+        <id name="idcustomer" type="java.lang.Long">
+            <column name="IdCustomer" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="domicilios" class="com.peycash.persistence.domain.Domicilios" fetch="select">
+            <column name="Id_Domicilio" />
+        </many-to-one>
+        <many-to-one name="customerstate" class="com.peycash.persistence.domain.Customerstate" fetch="select">
+            <column name="IdCustomerState" not-null="true" />
+        </many-to-one>
+        <many-to-one name="customerriskiness" class="com.peycash.persistence.domain.Customerriskiness" fetch="select">
+            <column name="IdCustomerRiskiness" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="Name" length="50" />
+        </property>
+        <property name="secondname" type="string">
+            <column name="SecondName" length="50" />
+        </property>
+        <property name="surname" type="string">
+            <column name="Surname" length="50" />
+        </property>
+        <property name="datebirth" type="timestamp">
+            <column name="DateBirth" length="19" />
+        </property>
+        <property name="gender" type="string">
+            <column name="Gender" length="50" />
+        </property>
+        <property name="numcrenelector" type="long">
+            <column name="NumCrenElector" precision="15" scale="0"/>
+        </property>
+        <property name="numpassaporte" type="string">
+            <column name="NumPassaporte" length="10" />
+        </property>
+        <property name="cartillamilitar" type="string">
+            <column name="CartillaMilitar" length="50" />
+        </property>
+        <property name="occupation" type="string">
+            <column name="Occupation" length="50" />
+        </property>
+        <property name="company" type="string">
+            <column name="Company" length="50" />
+        </property>
+        <property name="celnumber" type="java.lang.Long">
+            <column name="CelNumber" precision="10" scale="0" />
+        </property>
+        <property name="telnumber" type="java.lang.Long">
+            <column name="TelNumber" precision="8" scale="0" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="50" />
+        </property>
+        <property name="pecomment" type="string">
+            <column name="PEComment" />
+        </property>
+        <property name="lastsession" type="timestamp">
+            <column name="LastSession" length="19" not-null="true" />
+        </property>
+        <property name="failedattempscounter" type="java.lang.Byte">
+            <column name="FailedAttempsCounter" precision="2" scale="0" />
+        </property>
+        <property name="username" type="string">
+            <column name="Username" length="50" not-null="true" />
+        </property>
+        <property name="datemodified" type="timestamp">
+            <column name="DateModified" length="19" not-null="true" />
+        </property>
+        <property name="isactive" type="short">
+            <column name="isActive" not-null="true" />
+        </property>
+        <set name="customerchangehistories" table="customerchangehistory" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdCustomer"  />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Customerchangehistory" />
+        </set>
+        <set name="customerregistrations" table="customerregistration" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdCustomer" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Customerregistration" />
+        </set>
+    </class>
+</hibernate-mapping>

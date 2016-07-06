@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/04/2014 12:32:04 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Anonymouscomplaint" table="anonymouscomplaint" catalog="peycash">
+        <id name="idanonymouscomplaint" type="long">
+            <column name="IdAnonymousComplaint" />
+            <generator class="identity" />
+        </id>
+        <property name="pecomment" type="string">
+            <column name="PEComment" />
+        </property>
+        <property name="dateserver" type="timestamp">
+            <column name="DateServer" length="19" not-null="true" />
+        </property>
+        <property name="notificationcomplianceofficer" type="java.lang.Boolean">
+            <column name="NotificationComplianceOfficer" precision="1" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

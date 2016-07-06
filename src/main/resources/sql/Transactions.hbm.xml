@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/04/2014 11:23:59 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class catalog="peycash" name="com.peycash.persistence.domain.Transactions"
+		table="transactions">
+		<id name="idtransactions" type="java.lang.Long">
+			<column name="IdTransactions" />
+			<generator class="identity" />
+		</id>
+		<many-to-one class="com.peycash.persistence.domain.Transferstate"
+			fetch="select" name="transferstate">
+			<column name="IdTransferState" not-null="true" />
+		</many-to-one>
+		<many-to-one class="com.peycash.persistence.domain.Pinsecurity"
+			fetch="select" name="pinsecurity">
+			<column name="IdPINSecurity" not-null="true" />
+		</many-to-one>
+		<property generated="never" lazy="false" name="dateserver"
+			type="timestamp">
+			<column length="19" name="DateServer" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="celnumsend"
+			type="long">
+			<column name="CelNumSend" not-null="true" precision="10"
+				scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="celnumreceive"
+			type="long">
+			<column name="CelNumReceive" not-null="true" precision="10"
+				scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="transferamount"
+			type="big_decimal">
+			<column name="TransferAmount" precision="6" scale="2" />
+		</property>
+		<property generated="never" lazy="false" name="lastupdate"
+			type="timestamp">
+			<column length="19" name="LastUpdate" />
+		</property>
+		<set fetch="select" inverse="true" lazy="true" name="smsqueues"
+			sort="unsorted" table="smsqueue">
+			<key>
+				<column name="IdTransactions" not-null="true" />
+			</key>
+			<one-to-many class="com.peycash.persistence.domain.Smsqueue" />
+		</set>
+		<set name="txdetailses" inverse="true">
+			<key>
+				<column name="IdTransactions" />
+			</key>
+			<one-to-many class="com.peycash.persistence.domain.Txdetails" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Colonias" table="colonias" catalog="peycash">
+        <id name="idColonia" type="java.lang.Long">
+            <column name="Id_Colonia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="municipios" class="com.peycash.persistence.domain.Municipios" fetch="select">
+            <column name="Id_Municipio" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" />
+        </property>
+        <property name="usuarioBd" type="string">
+            <column name="Usuario_BD" length="15" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="date">
+            <column name="Fecha_Modificacion" length="10" not-null="true" />
+        </property>
+        <property name="cp" type="string">
+            <column name="CP" length="6" not-null="true" />
+        </property>
+        <property name="lat" type="string">
+            <column name="Lat" length="30"/>
+        </property>
+        <property name="lng" type="string">
+            <column name="Lng" length="30" />
+        </property>
+        <set name="domicilioses" table="domicilios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Colonia" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Domicilios" />
+        </set>
+    </class>
+</hibernate-mapping>

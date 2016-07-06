@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class catalog="peycash" name="com.peycash.persistence.domain.Accounttype" table="accounttype">
+  <id name="idaccounttype" type="java.lang.Integer">
+   <column name="IdAccountType"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="account" type="string">
+   <column length="50" name="Account" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="description" type="string">
+   <column name="Description"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true"
+   name="processingcodesForIdaccounttypefrom" sort="unsorted" table="processingcode">
+   <key>
+    <column name="IdAccountTypeFrom" not-null="true"/>
+   </key>
+   <one-to-many class="com.peycash.persistence.domain.Processingcode"/>
+  </set>
+  <set fetch="select" inverse="true" lazy="true"
+   name="processingcodesForIdaccounttypeto" sort="unsorted" table="processingcode">
+   <key>
+    <column name="IdAccountTypeTo" not-null="true"/>
+   </key>
+   <one-to-many class="com.peycash.persistence.domain.Processingcode"/>
+  </set>
+ </class>
+</hibernate-mapping>

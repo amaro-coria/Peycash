@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Workerrole" table="workerrole" catalog="peycash">
+        <id name="idworkerrole" type="java.lang.Integer">
+            <column name="IdWorkerRole" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="project" class="com.peycash.persistence.domain.Project" fetch="select">
+            <column name="IdProject" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="Name" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" />
+        </property>
+        <property name="pecomment" type="string">
+            <column name="PEComment" />
+        </property>
+        <property name="isactivied" type="short">
+            <column name="IsActivied" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

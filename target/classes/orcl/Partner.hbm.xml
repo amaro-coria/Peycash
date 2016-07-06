@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Partner" table="PARTNER">
+        <id name="idpartner" type="long">
+            <column name="IDPARTNER" precision="10" scale="0" />
+            <generator class="sequence" >
+        		<param name="sequence">ID_PARTNER</param>
+ 			</generator>
+        </id>
+        <many-to-one name="domicilios" class="com.peycash.persistence.domain.Domicilios" fetch="select">
+            <column name="ID_DOMICILIO" precision="16" scale="0" />
+        </many-to-one>
+        <property name="company" type="string">
+            <column name="COMPANY" length="50" not-null="true" />
+        </property>
+        <property name="companyname" type="string">
+            <column name="COMPANYNAME" length="50" not-null="true" />
+        </property>
+        <property name="commercialbusiness" type="string">
+            <column name="COMMERCIALBUSINESS" length="50" not-null="true" />
+        </property>
+        <property name="rfc" type="string">
+            <column name="RFC" length="50" not-null="true" />
+        </property>
+        <property name="fax" type="java.lang.Long">
+            <column name="FAX" precision="10" scale="0" />
+        </property>
+        <property name="telephone" type="java.lang.Long">
+            <column name="TELEPHONE" precision="10" scale="0" />
+        </property>
+        <property name="affiliationpesoexpress" type="short">
+            <column name="AFFILIATIONPESOEXPRESS" precision="4" scale="0" not-null="true" />
+        </property>
+        <property name="datemodified" type="serializable">
+            <column name="DATEMODIFIED" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="USERNAME" length="50" not-null="true" />
+        </property>
+        <property name="isactivied" type="boolean">
+            <column name="ISACTIVIED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="commision" type="big_decimal">
+            <column name="COMMISION" precision="5" not-null="true" />
+        </property>
+        <property name="fixedporcentaje" type="java.lang.Boolean">
+            <column name="FIXEDPORCENTAJE" precision="1" scale="0" />
+        </property>
+        <set name="partnershops" table="PARTNERSHOP" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPARTNER" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Partnershop" />
+        </set>
+        <set name="scalingmatrixes" table="SCALINGMATRIX" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPARTNER" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Scalingmatrix" />
+        </set>
+    </class>
+</hibernate-mapping>

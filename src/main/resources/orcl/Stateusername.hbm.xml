@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1/04/2014 06:12:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Stateusername" table="STATEUSERNAME">
+        <id name="idstateusername" type="long">
+            <column name="IDSTATEUSERNAME" />
+            <generator class="assigned" />
+        </id>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <set name="useraccounts" table="USERACCOUNT" inverse="false" lazy="true">
+            <key>
+                <column name="IDSTATEUSERNAME" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Useraccount" />
+        </set>
+    </class>
+</hibernate-mapping>

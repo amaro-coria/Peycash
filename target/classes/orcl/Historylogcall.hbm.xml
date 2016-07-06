@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Historylogcall" table="HISTORYLOGCALL">
+        <id name="idhistorylogcall" type="long">
+            <column name="IDHISTORYLOGCALL" precision="10" scale="0" />
+           <generator class="sequence" >
+        		<param name="sequence">ID_HISTORYLOGCALL</param>
+ 			</generator>
+        </id>
+        <many-to-one name="logcall" class="com.peycash.persistence.domain.Logcall" fetch="select">
+            <column name="IDLOGCALL" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="dateserver" type="serializable">
+            <column name="DATESERVER" not-null="true" />
+        </property>
+        <property name="idstatecall" type="long">
+            <column name="IDSTATECALL" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="attempt" type="string">
+            <column name="ATTEMPT" length="50" />
+        </property>
+        <property name="username" type="string">
+            <column name="USERNAME" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

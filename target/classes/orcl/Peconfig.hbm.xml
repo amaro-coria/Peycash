@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Peconfig" table="PECONFIG">
+        <id name="idpeconfig" type="long">
+            <column name="IDPECONFIG" precision="10" scale="0" />
+            <generator class="sequence" >
+        		<param name="sequence">ID_PECONFIG</param>
+ 			</generator>
+        </id>
+        <many-to-one name="peconnectiontype" class="com.peycash.persistence.domain.Peconnectiontype" fetch="select">
+            <column name="IDPECONNETIONTYPE" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="peservices" class="com.peycash.persistence.domain.Peservices" fetch="select">
+            <column name="IDPESERVICES" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="url" type="string">
+            <column name="URL" length="100" />
+        </property>
+        <property name="ip" type="string">
+            <column name="IP" length="15" not-null="true" />
+        </property>
+        <property name="port" type="string">
+            <column name="PORT" length="5" not-null="true" />
+        </property>
+        <property name="logactivated" type="boolean">
+            <column name="LOGACTIVATED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="logpath" type="string">
+            <column name="LOGPATH" length="100" />
+        </property>
+        <property name="eventactivated" type="boolean">
+            <column name="EVENTACTIVATED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="eventpath" type="string">
+            <column name="EVENTPATH" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

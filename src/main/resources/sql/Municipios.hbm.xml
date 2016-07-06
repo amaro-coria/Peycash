@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Municipios" table="municipios" catalog="peycash">
+        <id name="idMunicipio" type="java.lang.Long">
+            <column name="Id_Municipio" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estados" class="com.peycash.persistence.domain.Estados" fetch="select">
+            <column name="Id_Estado" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" />
+        </property>
+        <property name="usuarioBd" type="string">
+            <column name="Usuario_BD" length="15" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="date">
+            <column name="Fecha_Modificacion" length="10" not-null="true" />
+        </property>
+        <set name="coloniases" table="colonias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Municipio" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Colonias" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1/04/2014 06:12:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Useraccount" table="USERACCOUNT">
+        <id name="iduseraccount" type="long">
+            <column name="IDUSERACCOUNT" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="stateusername" class="com.peycash.persistence.domain.Stateusername" fetch="join">
+            <column name="STATEUSERNAME" />
+        </many-to-one>
+        <property name="idproject" type="long">
+            <column name="IDPROJECT" />
+        </property>
+        <property name="useraccount" type="java.lang.String">
+            <column name="USERACCOUNT" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="isactivied" type="boolean">
+            <column name="ISACTIVIED" />
+        </property>
+        <set name="userchangehistories" table="USERCHANGEHISTORY" inverse="false" lazy="true">
+            <key>
+                <column name="IDUSERACCOUNT" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Userchangehistory" />
+        </set>
+    </class>
+</hibernate-mapping>

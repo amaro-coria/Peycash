@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/04/2014 11:23:59 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Pebranch" table="pebranch" catalog="peycash">
+        <id name="idpebranch" type="java.lang.Integer">
+            <column name="IdPEBranch" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="domicilios" class="com.peycash.persistence.domain.Domicilios" fetch="select">
+            <column name="Id_Domicilio" />
+        </many-to-one>
+        <many-to-one name="pecompany" class="com.peycash.persistence.domain.Pecompany" fetch="select">
+            <column name="IdPECompany" not-null="true" />
+        </many-to-one>
+        <many-to-one name="workday" class="com.peycash.persistence.domain.Workday" fetch="select">
+            <column name="IdWorkday" not-null="true" />
+        </many-to-one>
+        <property name="telephone" type="java.lang.Long">
+            <column name="Telephone" precision="10" scale="0" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="50" />
+        </property>
+        <property name="datemodified" type="timestamp">
+            <column name="DateModified" length="19" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="Username" length="50" not-null="true" />
+        </property>
+        <property name="isactivied" type="short">
+            <column name="IsActivied" not-null="true" />
+        </property>
+        <set name="workinggroups" table="workinggroup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdPEBranch" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Workinggroup" />
+        </set>
+    </class>
+</hibernate-mapping>

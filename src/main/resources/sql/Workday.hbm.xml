@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/04/2014 11:23:59 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Workday" table="workday" catalog="peycash">
+        <id name="idworkday" type="int">
+            <column name="IdWorkday" />
+            <generator class="assigned" />
+        </id>
+        <property name="monday" type="java.lang.Short">
+            <column name="Monday" />
+        </property>
+        <property name="tuesday" type="java.lang.Short">
+            <column name="Tuesday" />
+        </property>
+        <property name="wednesday" type="java.lang.Short">
+            <column name="Wednesday" />
+        </property>
+        <property name="thursday" type="java.lang.Short">
+            <column name="Thursday" />
+        </property>
+        <property name="friday" type="java.lang.Short">
+            <column name="Friday" />
+        </property>
+        <property name="saturday" type="java.lang.Short">
+            <column name="Saturday" />
+        </property>
+        <property name="sunday" type="java.lang.Short">
+            <column name="Sunday" />
+        </property>
+        <property name="checkin" type="timestamp">
+            <column name="CheckIn" length="19" not-null="true" />
+        </property>
+        <property name="checkout" type="timestamp">
+            <column name="CheckOut" length="19" not-null="true" />
+        </property>
+        <set name="pebranches" table="pebranch" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdWorkday" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Pebranch" />
+        </set>
+    </class>
+</hibernate-mapping>

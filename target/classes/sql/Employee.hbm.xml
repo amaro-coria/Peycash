@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Employee" table="employee" catalog="peycash">
+        <id name="idemployee" type="java.lang.Integer">
+            <column name="IdEmployee" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="domicilios" class="com.peycash.persistence.domain.Domicilios" fetch="select">
+            <column name="Id_Domicilio" />
+        </many-to-one>
+        <many-to-one name="workinggroup" class="com.peycash.persistence.domain.Workinggroup" fetch="select">
+            <column name="IdWorkingGroup" not-null="true" />
+        </many-to-one>
+        <property name="immediateboss" type="string">
+            <column name="ImmediateBoss" length="100" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="Name" length="50" not-null="true" />
+        </property>
+        <property name="secondname" type="string">
+            <column name="SecondName" length="50" not-null="true" />
+        </property>
+        <property name="surname" type="string">
+            <column name="Surname" length="50" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="Gender" length="50" not-null="true" />
+        </property>
+        <property name="datebirthay" type="date">
+            <column name="DateBirthay" length="19" not-null="true" />
+        </property>
+        <property name="numcredelector" type="java.lang.Long">
+            <column name="NumCredElector" precision="15" scale="0" />
+        </property>
+        <property name="numpasaporte" type="string">
+            <column name="NumPasaporte" length="20" />
+        </property>
+        <property name="cartillamilitar" type="string">
+            <column name="CartillaMilitar" length="50" />
+        </property>
+        <property name="telephone" type="java.lang.Long">
+            <column name="Telephone" precision="10" scale="0" />
+        </property>
+        <property name="ext" type="java.lang.Integer">
+            <column name="Ext" precision="6" scale="0" />
+        </property>
+        <property name="celnumber1" type="java.lang.Long">
+            <column name="CelNumber1" precision="10" scale="0" />
+        </property>
+        <property name="celnumber2" type="java.lang.Long">
+            <column name="CelNumber2" precision="10" scale="0" />
+        </property>
+        <property name="emailjob" type="string">
+            <column name="EmailJob" length="50" not-null="true" />
+        </property>
+        <property name="emailpersonal" type="string">
+            <column name="EmailPersonal" length="50" />
+        </property>
+        <property name="cvpdf" type="binary">
+            <column name="CVpdf" not-null="true" />
+        </property>
+        <property name="dateadmission" type="date">
+            <column name="DateAdmission" length="19" not-null="true" />
+        </property>
+        <property name="datedeparture" type="date">
+            <column name="DateDeparture" length="19" not-null="true" />
+        </property>
+        <property name="salary" type="big_decimal">
+            <column name="Salary" precision="8" not-null="true" />
+        </property>
+        <property name="datemodified" type="timestamp">
+            <column name="DateModified" length="19" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="Username" length="50" not-null="true" />
+        </property>
+        <property name="isactivied" type="java.lang.Short">
+            <column name="IsActivied" />
+        </property>
+        <set name="projects" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdEmployee" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Project" />
+        </set>
+        <set name="employeechangehistories" table="employeechangehistory" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdEmployee" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Employeechangehistory" />
+        </set>
+        <set name="logbookofactivitieses" table="logbookofactivities" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdEmployee" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Logbookofactivities" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/05/2014 05:27:16 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Messagefields" table="messagefields" catalog="peycash">
+        <id name="idMessageField" type="int">
+            <column name="IdMessageField" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fields" class="com.peycash.persistence.domain.Fields" fetch="select">
+            <column name="IdField" />
+        </many-to-one>
+        <many-to-one name="messagestructure" class="com.peycash.persistence.domain.Messagestructure" fetch="select">
+            <column name="IdMessage" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

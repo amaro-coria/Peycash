@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Scalingmatrix" table="SCALINGMATRIX">
+        <id name="idscalingmatrix" type="long">
+            <column name="IDSCALINGMATRIX" precision="10" scale="0" />
+            <generator class="sequence" >
+        		<param name="sequence">ID_SCALINGMATRIX</param>
+ 			</generator>
+        </id>
+        <many-to-one name="partner" class="com.peycash.persistence.domain.Partner" fetch="select">
+            <column name="IDPARTNER" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="pelevel" type="int">
+            <column name="PELEVEL" precision="6" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="50" not-null="true" />
+        </property>
+        <property name="surname" type="string">
+            <column name="SURNAME" length="50" not-null="true" />
+        </property>
+        <property name="workstation" type="string">
+            <column name="WORKSTATION" length="50" not-null="true" />
+        </property>
+        <property name="contactemail" type="string">
+            <column name="CONTACTEMAIL" length="50" />
+        </property>
+        <property name="celnumber" type="java.lang.Long">
+            <column name="CELNUMBER" precision="10" scale="0" />
+        </property>
+        <property name="telnumber" type="java.lang.Integer">
+            <column name="TELNUMBER" precision="8" scale="0" />
+        </property>
+        <property name="extension" type="big_decimal">
+            <column name="EXTENSION" precision="8" />
+        </property>
+        <property name="datemodified" type="serializable">
+            <column name="DATEMODIFIED" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="USERNAME" length="50" not-null="true" />
+        </property>
+        <property name="isactivied" type="boolean">
+            <column name="ISACTIVIED" precision="1" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

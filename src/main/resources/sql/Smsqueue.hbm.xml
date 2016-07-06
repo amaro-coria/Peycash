@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Smsqueue" table="smsqueue" catalog="peycash">
+        <id name="idsmsqueue" type="java.lang.Long">
+            <column name="IdSMSQueue" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="smsstatussend" class="com.peycash.persistence.domain.Smsstatussend" fetch="select">
+            <column name="IdSMSStatusSend" not-null="true" />
+        </many-to-one>
+        <many-to-one name="smsprovider" class="com.peycash.persistence.domain.Smsprovider" fetch="select">
+            <column name="IdSMSProvider" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transactions" class="com.peycash.persistence.domain.Transactions" fetch="select">
+            <column name="IdTransactions" not-null="true" />
+        </many-to-one>
+        <property name="textticket" type="string">
+            <column name="TextTicket" length="160" not-null="true" />
+        </property>
+        <property name="providerresponse" type="string">
+            <column name="ProviderResponse" length="160"  />
+        </property>
+    </class>
+</hibernate-mapping>

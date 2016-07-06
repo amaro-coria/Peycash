@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:10:55 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Typedata" table="TYPEDATA">
+        <id name="idtypedata" type="long">
+            <column name="IDTYPEDATA" precision="10" scale="0" />
+            <generator class="sequence" >
+        		<param name="sequence">ID_TYPEDATA</param>
+ 			</generator>
+        </id>
+        <property name="data" type="string">
+            <column name="DATA" length="50" not-null="true" />
+        </property>
+        <property name="length" type="string">
+            <column name="LENGTH" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <set name="fieldses" table="FIELDS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDTYPEDATA" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Fields" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-sep-2014 12:17:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+	<class catalog="peycash" name="com.peycash.persistence.domain.Role"
+		table="role">
+		<id name="idrole" type="int">
+			<column name="idrole" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="description"
+			type="string">
+			<column length="45" name="description" />
+		</property>
+		<set fetch="select" inverse="true" lazy="true" name="roleusers"
+			sort="unsorted" table="roleuser">
+			<key>
+				<column name="idrole" not-null="true" />
+			</key>
+			<one-to-many class="com.peycash.persistence.domain.Roleuser" />
+		</set>
+	</class>
+</hibernate-mapping>

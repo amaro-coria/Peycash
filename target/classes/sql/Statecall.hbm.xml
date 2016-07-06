@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2014 11:52:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peycash.persistence.domain.Statecall" table="statecall" catalog="peycash">
+        <id name="idstatecall" type="java.lang.Integer">
+            <column name="IdStateCall" />
+            <generator class="identity" />
+        </id>
+        <property name="statecall" type="string">
+            <column name="StateCall" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="50" not-null="true" />
+        </property>
+        <set name="logcalls" table="logcall" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdStateCall" not-null="true" />
+            </key>
+            <one-to-many class="com.peycash.persistence.domain.Logcall" />
+        </set>
+    </class>
+</hibernate-mapping>
